@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import cardIndex from '../cardIndex.js';
 import Card from './Card';
 
 export default function Board(props) {
@@ -7,8 +8,7 @@ export default function Board(props) {
 	let [ userScore, setUserScore ] = useState(0);
 
 	useEffect(() => {
-		let { cards } = props;
-		const shuffled = cards.slice().sort(() => Math.random() - 0.5);
+		const shuffled = cardIndex.slice().sort(() => Math.random() - 0.5);
 		setShuffledCards(shuffled);
 	}, []);
 
@@ -16,6 +16,7 @@ export default function Board(props) {
 		if(selectedCards.length === 2) {
 			compareSelected(selectedCards);
 		}
+		// eslint-disable-next-line
 	}, [selectedCards]);
 
 	const onCardSelect = (card) => {
