@@ -2,23 +2,27 @@ import React from 'react';
 
 export default function Card(props) {
 	let {
+		index,
 		onCardSelect,
-		isOpen,
-		card,
+		cardImage,
 		matchId,
-		set,
-		taken,
+		isFlipped,
+		isDisabled,
+		isInactive,
 	} = props;
+	const handleClick = () => {
+		!isFlipped && !isDisabled && onCardSelect(index);
+	};
 
 	return (
 		<div
-			className={`Card ${taken ? 'CardTaken' : ''}`}
-			onClick={() => onCardSelect({ matchId, set })}
+			className={`Card ${isInactive ? 'CardTaken' : ''}`}
+			onClick={handleClick}
 		>
-			{ isOpen && !taken && (
+			{ isFlipped && !isInactive && (
 				<img
 					className="CardImage"
-					src={card}
+					src={cardImage}
 					alt={`card${matchId}`}
 				/>
 			)}
