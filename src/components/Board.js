@@ -70,10 +70,12 @@ export default function Board(props) {
 		return () => {
 			clearTimeout(timeout);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectedCards]);
 
 	useEffect(() => {
 		checkCompletion();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [clearedCards]);
 
 	useEffect(() => {
